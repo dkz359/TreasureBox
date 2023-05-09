@@ -1,9 +1,12 @@
 package cc.dukz.treasurebox.controller;
 
+import cc.dukz.treasurebox.service.TimetableService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @author Arvin Du
@@ -16,9 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class ShortcutsController {
 
+    @Resource
+    private TimetableService timetableService;
+
     @GetMapping("/timetable")
     public String getTimetable(){
-
-        return "今天没有课，嗨起来！";
+        return timetableService.getTimetable();
     }
 }
