@@ -10,4 +10,6 @@ public interface DailyService {
     String getDailyPoem();
 
     String getDailyEnglish();
+
+    String getNextHoliday();
 }

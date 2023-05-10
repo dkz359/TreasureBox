@@ -32,9 +32,11 @@ public class ShortcutsController {
         String timetable = timetableService.getTimetable();
         String poem = dailyService.getDailyPoem();
         String english = dailyService.getDailyEnglish();
+        String nextHoliday = dailyService.getNextHoliday();
         joiner.add(timetable);
         joiner.add(poem);
         joiner.add(english);
+        joiner.add(nextHoliday);
         return joiner.toString();
     }
 }
