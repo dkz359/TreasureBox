@@ -1,6 +1,6 @@
 package cc.dukz.treasurebox.service.impl;
 
-import cc.dukz.treasurebox.constant.TimetableConsts;
+import cc.dukz.treasurebox.constant.BusinessConsts;
 import cc.dukz.treasurebox.enumeration.WeekEnum;
 import cc.dukz.treasurebox.service.TimetableService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ public class TimeTableServiceImpl implements TimetableService {
         LocalDate localDate = LocalDate.now();
         String code = String.valueOf(localDate.getDayOfWeek());
         WeekEnum week = WeekEnum.getEnumByCode(code);
-        String res = TimetableConsts.TIMETABLE.get(week);
+        String res = BusinessConsts.TIMETABLE.get(week);
         return res;
     }
 }

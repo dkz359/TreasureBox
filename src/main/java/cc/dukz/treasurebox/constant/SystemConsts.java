@@ -27,6 +27,9 @@ public class SystemConsts {
      */
     public static final String NEXT_HOLIDAY_URL = "https://timor.tech/api/holiday/next";
 
+    /**
+     * 节日提示词
+     */
     public static final ImmutableMap<String, String> HOLIDAY_BLESSING_MESSAGE = ImmutableMap.<String, String>builder()
             .put("元旦", "元旦快乐哦^_^")
             .put("除夕", "有压岁钱了哦^_^")

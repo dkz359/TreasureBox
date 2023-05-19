@@ -1,5 +1,6 @@
 package cc.dukz.treasurebox.controller;
 
+import cc.dukz.treasurebox.service.BirthdayService;
 import cc.dukz.treasurebox.service.DailyService;
 import cc.dukz.treasurebox.service.TimetableService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,8 @@ public class ShortcutsController {
     private TimetableService timetableService;
     @Resource
     private DailyService dailyService;
+    @Resource
+    private BirthdayService birthdayService;
 
     @GetMapping("/daily")
     public String getDailyContent(){
@@ -33,10 +36,12 @@ public class ShortcutsController {
         String poem = dailyService.getDailyPoem();
         String english = dailyService.getDailyEnglish();
         String nextHoliday = dailyService.getNextHoliday();
+        String birthdayInterval = birthdayService.birthdayInterval();
         joiner.add(timetable);
         joiner.add(poem);
         joiner.add(english);
         joiner.add(nextHoliday);
+        joiner.add(birthdayInterval);
         return joiner.toString();
     }
 }

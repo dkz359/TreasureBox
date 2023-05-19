@@ -6,6 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 /**
  * date util
@@ -43,4 +45,58 @@ public class DateUtil {
         return date.format(DateTimeFormatter.ofPattern(pattern));
     }
 
+    /**
+     * get date interval days
+     * @param start
+     * @param end
+     * @return
+     */
+    public static Long getIntervalDays(LocalDate start, LocalDate end){
+        if(Objects.isNull(start) || Objects.isNull(end)){
+            return null;
+        }
+        return start.until(end, ChronoUnit.DAYS);
+    }
+    /**
+     * get date interval months
+     * @param start
+     * @param end
+     * @return
+     */
+    public static Long getIntervalMonths(LocalDate start, LocalDate end){
+        if(Objects.isNull(start) || Objects.isNull(end)){
+            return null;
+        }
+        return start.until(end, ChronoUnit.MONTHS);
+    }
+    /**
+     * get date interval years
+     * @param start
+     * @param end
+     * @return
+     */
+    public static Long getIntervalYears(LocalDate start, LocalDate end){
+        if(Objects.isNull(start) || Objects.isNull(end)){
+            return null;
+        }
+        return start.until(end, ChronoUnit.YEARS);
+    }
+
+    /**
+     * get birthday interval
+     * @param birth
+     * @return
+     */
+    public static Long getBirthdayInterval(LocalDate birth){
+        if(Objects.isNull(birth)){
+            return null;
+        }
+        LocalDate now = LocalDate.now();
+        birth = birth.withYear(now.getYear());
+        if(birth.isBefore(now)){
+            birth = birth.withYear(now.getYear()+1);
+        }
+
+        return getIntervalDays(now, birth);
+    }
 }
